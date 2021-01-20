@@ -82,7 +82,23 @@ void vehicle::addVehicle()
 
 int computeTimeDifference(time t1,time t2)
 {
+    int sec1, sec2, totalsec;
+   time t3;
+    //calculate difference
+    //get time in total seconds
+    sec1 = t1.hh*60*60 + t1.mm*60 + t1.ss;
+    sec2 = t2.hh*60*60 + t2.mm*60 + t2.ss;
 
+    totalsec = sec2-sec1;
+
+    //extract time in Hours, Minutes and Seconds
+    t3.mm = totalsec/60;
+    t3.hh = t3.mm/60;
+    t3.mm = t3.mm%60;
+    t3.ss = totalsec%60;
+
+   // cout<<"Time difference:" <<hh<<":"<<mm<<":"<<ss<<endl;
+   return t3.hh;
 }
 
 void vehicle:: deleteVehicle()
