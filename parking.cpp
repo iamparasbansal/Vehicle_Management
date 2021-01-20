@@ -6,7 +6,11 @@ using namespace std;
 
 struct time
 {
-
+    int hh;
+    int mm;
+    int ss;
+    char col1;
+    char col2;
 };
 
 struct date
