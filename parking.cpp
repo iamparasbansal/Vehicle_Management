@@ -103,6 +103,97 @@ int computeTimeDifference(time t1,time t2)
 
 void vehicle:: deleteVehicle()
 {
+    
+    string pno;
+    int typ;
+    time depart;
+    int time_diff;
+    int charge=0;
+
+    cout<<"Enter vehicle type(1 for Car/2 for Bike) : ";
+    cin>>typ;
+    cout<<"Enter vehicle number : ";
+    cin>>pno;
+    cout<<"Enter departure time in hours minutes and seconds : ";
+    cin>>depart.hh>>depart.col1>>depart.mm>>depart.col2>>depart.ss;
+
+
+    for(int j=0;j<=i;j++)
+    {
+        if((veh.at(j).pltno==pno)&&(veh.at(j).type==typ))
+        {
+            veh.at(j).departure.hh=depart.hh;
+            veh.at(j).departure.mm=depart.mm;
+            veh.at(j).departure.ss=depart.ss;
+
+            time_diff=computeTimeDifference(veh.at(j).arrive,depart);
+
+            if(veh.at(j).type== 1)
+            {
+                totalcar--;
+                if(time_diff<2)
+                {
+                    charge=20;
+                }
+                else
+                {
+                    if((time_diff>2) && ((time_diff<5)))                          {
+                            charge=40;
+                        }
+                        else
+                        {
+                            charge=50;
+                        }
+                }
+
+            }
+            else
+            {
+                totalbike--;
+                    if( time_diff<2)
+                    {
+                        charge=5;
+                    }
+                    else
+                    {
+                        if((time_diff>2) && ((time_diff<5)))
+                            {
+                                charge=10;
+                            }
+                            else
+                            {
+                                charge=20;
+                            }
+                    }
+
+            }
+
+            cout<<"\nVehicle having vehicle number  : "<<veh.at(j).pltno<<" has left the parking after paying Rs. "<<charge<<endl;
+            file.open("parkingDatabase.txt",ios::app);
+            if(!file)
+            {
+                cerr << "Error: file could not be opened" << endl;
+                exit(1);
+            }
+
+            file<<veh.at(j).type<<"\t\t\t"<<veh.at(j).pltno<<"\t\t\t"<<veh.at(j).dt.day<<"/"<<veh.at(j).dt.month<<"/"<<veh.at(j).dt.year<<"\t\t\t"<< veh.at(j).arrive.hh<<":"<<veh.at(j).arrive.mm<<":"<<veh.at(j).arrive.ss<<"\t\t\t"<<veh.at(j).departure.hh<<":"<<veh.at(j).departure.mm<<":"<<veh.at(j).departure.ss<<endl;
+            file.close();
+            veh.erase(veh.begin()+j);
+            i--;
+            totalvehicle--;
+            totalamt = totalamt+charge;
+            break;
+
+        }
+
+        if(j==i)
+        {
+            cout<<"\nWrong Entry , Try Again "<<endl;
+            cout<<"Departure : "<<endl;
+            deleteVehicle();
+        }
+
+    }
 
 }
 
