@@ -15,7 +15,11 @@ struct time
 
 struct date
 {
-
+    int day;
+    int month;
+    int year;
+    char sym1;
+    char sym2;
 };
 
 class vehicle
