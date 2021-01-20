@@ -46,6 +46,30 @@ fstream file;
 
 void vehicle::addVehicle()
 {
+    vehicle *v = new vehicle;
+    cout<<"Enter vehicle type(1 for Car/2 for Bike) : ";
+    cin>>v->type;
+    cout<<"Enter vehicle number : ";
+    cin>>v->pltno;
+    cout<<"Enter arrival time in hours minutes and seconds : ";
+    cin>>v->arrive.hh>>v->arrive.col1>>v->arrive.mm>>v->arrive.col2>>v->arrive.ss;
+    cout<<"Enter date in day month and year: ";
+    cin>>v->dt.day>>v->dt.sym1>>v->dt.month>>v->dt.sym2>>v->dt.year;
+
+    veh.at(i).pltno=v->pltno;
+    veh.at(i).type=v->type;
+    veh.at(i).arrive.hh=v->arrive.hh;
+    veh.at(i).arrive.mm=v->arrive.mm;
+    veh.at(i).arrive.ss=v->arrive.ss;
+    veh.at(i).dt.day=v->dt.day;
+    veh.at(i).dt.month=v->dt.month;
+    veh.at(i).dt.year=v->dt.year;
+
+    i++;
+    totalvehicle++;
+
+    
+
 
 }
 
