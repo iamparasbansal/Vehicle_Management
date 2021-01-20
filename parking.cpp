@@ -68,9 +68,16 @@ void vehicle::addVehicle()
     i++;
     totalvehicle++;
 
-    
+    if(v->type == 1)
+    {
+        totalcar++;
+    }
+    else
+    {
+        totalbike++;
+    }
 
-
+    cout<<"\nVehicle added successfully"<<endl;
 }
 
 int computeTimeDifference(time t1,time t2)
