@@ -200,7 +200,7 @@ void vehicle:: deleteVehicle()
 
 void vehicle::printvehicle(vehicle v)
 {
-
+    cout<<v.type<<"\t\t\t"<<v.pltno<<"\t\t\t"<<v.dt.day<<"/"<<v.dt.month<<"/"<<v.dt.year<<"\t\t\t"<< v.arrive.hh<<":"<<v.arrive.mm<<":"<<v.arrive.ss<<endl;
 }
 
 void vehicle::show()
